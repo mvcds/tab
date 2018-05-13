@@ -1,0 +1,13 @@
+name: Consumed Item
+description: What will be shared
+attributes:
+  - name: name
+    required: true
+  - name: units
+    type: integer
+    required: true
+  - name: price
+    type: decimal
+    required: true
+aliases:
+  - entry

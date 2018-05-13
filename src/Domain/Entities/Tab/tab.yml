@@ -1,0 +1,10 @@
+name: Tab
+description: The service to be shared between people
+attributes:
+  - name: items
+    type: array
+    of: Consumed Item
+    required: true
+aliases:
+  - bill
+  - account

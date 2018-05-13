@@ -16,7 +16,13 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      Entities: path.resolve(__dirname, 'src/Domain/Entities'),
+      Objects: path.resolve(__dirname, 'src/Domain/Objects'),
+      Organisms: path.resolve(__dirname, 'src/Web/components/organisms'),
+      joi: 'joi-browser'
+    }
   },
   output: {
     publicPath: bundlePath,
