@@ -1,6 +1,6 @@
 const React = require('react')
 const { storiesOf } = require('@storybook/react')
-const { withKnob, number } = require('@storybook/addon-knobs/react')
+const { withKnobs, number, boolean } = require('@storybook/addon-knobs/react')
 const { action } = require('@storybook/addon-actions')
 
 const { FilledWithRandomItems } = require('Entities/Tab/tab.factory')
@@ -18,17 +18,22 @@ const options = {
 
 const props = {
   onOpenModal: action('Open Modal'),
+  onCloseModal: action('Close Modal'),
+  onAddItem: action('Add Item')
 }
 
 storiesOf('Components/Organisms/Tab Table', module)
   .addDecorator(withKnobs)
   .add('Empty', () => {
-    return (<TabTable {...props} />)
+    const isModalOpen = boolean('Open modal?', false)
+
+    return (<TabTable isModalOpen={isModalOpen} {...props} />)
   })
   .add('Filled', () => {
+    const isModalOpen = boolean('Open modal?', false)
     const numberOfItems = number('Items', MIN, options)
 
     const tab = FilledWithRandomItems(numberOfItems)
 
-    return (<TabTable {...tab} {...props} />)
+    return (<TabTable isModalOpen={isModalOpen} {...tab} {...props} />)
   })

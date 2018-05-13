@@ -1,0 +1,6 @@
+{
+  "name": "Tab Table",
+  "description": "All tab's entries",
+  "main": "./tabTable.state.js",
+  "private": true
+}
