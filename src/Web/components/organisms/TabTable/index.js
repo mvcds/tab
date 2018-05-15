@@ -1,5 +1,10 @@
 const React = require('react')
 const PropTypes = require('prop-types')
+const bem = require('bem-classname')
+
+require('./tabTable.styl')
+
+const baseClass = bem.bind(null, 'tab-table')
 
 const LANGUAGE = 'en-US'
 const OPTIONS = {
@@ -28,33 +33,30 @@ function ItemEntry ({ name, units, price, subTotal }) {
 }
 
 function ItemModal ({ onCloseModal, onAddItem }) {
-  return (
-    <aside>
-      <header>
-        <span>
-          New Item
-        </span>
-        <span onClick={onCloseModal}>
-          &times;
-        </span>
-      </header>
-      <form>
-        <div>
-          Name: <input />
-        </div>
-        <div>
-          Units: <input type="number" />
-        </div>
-        <div>
-          Price: <input type="number" />
-        </div>
-      </form>
-      <footer>
-        <button onClick={onCloseModal}>Cancel</button>
-        <button onClick={onAddItem}>Save</button>
-      </footer>
+  return [
+    <div key="modal-background" className={baseClass('modal-background')} />,
+    <aside key="modal-content" className={baseClass('modal-content')}>
+      <div className={baseClass('modal')}>
+        <header className={baseClass('modal-header')}>
+          <span>
+            New Item
+          </span>
+          <span onClick={onCloseModal}>
+            &times;
+          </span>
+        </header>
+        <form className={baseClass('modal-body')}>
+          <input placeholder="Name" />
+          <input type="number" placeholder="Units" min="0" step="0.01" />
+          <input type="number" placeholder="Price" min="0" step="0.01" />
+        </form>
+        <footer className={baseClass('modal-footer')}>
+          <button onClick={onCloseModal}>Cancel</button>
+          <button onClick={onAddItem}>Save</button>
+        </footer>
+      </div>
     </aside>
-  )
+  ]
 }
 
 function sumItems (total, { subTotal }) {
@@ -65,8 +67,8 @@ function TabTable (props) {
   const { items, isModalOpen, onOpenModal } = props
 
   return (
-    <div>
-      <table>
+    <div className={baseClass()}>
+      <table className={baseClass('table')}>
         <thead>
           <tr>
             <th>Item</th>
@@ -81,7 +83,9 @@ function TabTable (props) {
         <tfoot>
           <tr>
             <td colSpan="4">
-              <button onClick={onOpenModal}>Add Item</button>
+              <button onClick={onOpenModal} className={baseClass('button')}>
+                Add Item
+              </button>
             </td>
           </tr>
           <tr>

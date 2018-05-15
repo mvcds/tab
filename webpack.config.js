@@ -12,12 +12,25 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         options: { presets: ['env'] }
+      },
+      {
+        test: /\.styl$/,
+        exclude: [
+          /node_modules/,
+          /joi-browser/
+        ],
+        use: [
+          'style-loader',
+          'css-loader',
+          'stylus-loader'
+        ]
       }
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx', '.css'],
     alias: {
+      Styles: path.resolve(__dirname, 'src/Web/styles'),
       Entities: path.resolve(__dirname, 'src/Domain/Entities'),
       Objects: path.resolve(__dirname, 'src/Domain/Objects'),
       Organisms: path.resolve(__dirname, 'src/Web/components/organisms'),
@@ -32,5 +45,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'src/Web/public'),
     port: 9000
   },
+  devtool: 'source-map',
+  target: 'web',
   plugins: [ new webpack.HotModuleReplacementPlugin() ]
 }

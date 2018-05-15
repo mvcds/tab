@@ -1,0 +1,59 @@
+@import '~Styles/index'
+
+.tab-table
+  &__table
+    width 100%
+
+    tbody,
+    tfoot
+      th
+        text-align right
+
+    button
+      width 100%
+      padding 8px
+      border-color black
+      cursor pointer
+
+  &__modal-background,
+  &__modal-content
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+
+  &__modal-background
+    background black
+    height 100%
+    width 100%
+    opacity .2
+    z-index 10
+
+  &__modal-content
+    z-index 100
+    display flex
+    align-items center
+    justify-content center
+
+  &__modal,
+  &__modal-body
+    display grid
+    grid-gap 8px
+
+  &__modal
+    background white
+    border-radius 4px
+    padding 8px 16px
+    width 80%
+
+  &__modal-header
+    display flex
+    justify-content space-between
+
+  &__modal-body
+    input
+      padding 8px
+
+  &__modal-footer
+    text-align right
