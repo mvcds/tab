@@ -9,7 +9,10 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "domain": "hubi save --translator joi --same-folder"
+    "domain": "hubi save --translator joi --same-folder",
+    "build": "webpack",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.4",
@@ -21,6 +24,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
     "faker": "^4.1.0",
+    "gh-pages": "^1.1.0",
     "hubi": "^4.5.1",
     "rosie": "^2.0.1",
     "style-loader": "^0.21.0",
