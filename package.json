@@ -12,7 +12,7 @@
     "domain": "hubi save --translator joi --same-folder",
     "build": "webpack",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -a"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.4",
