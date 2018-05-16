@@ -1,9 +1,9 @@
 const Joi = require('joi')
 
 const SCHEMA = {
-  'name': Joi.string().required(),
-  'units': Joi.number().integer().required(),
-  'price': Joi.number().required(),
+  'name': Joi.string().required().default(''),
+  'units': Joi.number().integer().required().default(1),
+  'price': Joi.number().required().default(0),
 }
 
 module.exports = SCHEMA

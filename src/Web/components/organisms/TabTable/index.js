@@ -32,7 +32,39 @@ function ItemEntry ({ name, units, price, subTotal }) {
   )
 }
 
-function ItemModal ({ onCloseModal, onAddItem }) {
+function ModalBody (props) {
+  const { newConsumedItem, onChangeItemName, onChangeItemUnits, onChangeItemPrice } = props
+
+  return (
+    <form className={baseClass('modal-body')}>
+      <input
+        placeholder="Name"
+        value={newConsumedItem.name}
+        onChange={onChangeItemName}
+      />
+      <input
+        type="number"
+        placeholder="Units"
+        min="0"
+        step="1"
+        value={newConsumedItem.units}
+        onChange={onChangeItemUnits}
+      />
+      <input
+        type="number"
+        placeholder="Price"
+        min="0"
+        step="0.01"
+        value={newConsumedItem.price}
+        onChange={onChangeItemPrice}
+      />
+    </form>
+  )
+}
+
+function ItemModal (props) {
+  const { onCloseModal, onAddItem } = props
+
   return [
     <div key="modal-background" className={baseClass('modal-background')} />,
     <aside key="modal-content" className={baseClass('modal-content')}>
@@ -45,11 +77,7 @@ function ItemModal ({ onCloseModal, onAddItem }) {
             &times;
           </span>
         </header>
-        <form className={baseClass('modal-body')}>
-          <input placeholder="Name" />
-          <input type="number" placeholder="Units" min="0" step="0.01" />
-          <input type="number" placeholder="Price" min="0" step="0.01" />
-        </form>
+        <ModalBody {...props} />
         <footer className={baseClass('modal-footer')}>
           <button onClick={onCloseModal}>Cancel</button>
           <button onClick={onAddItem}>Save</button>
@@ -104,9 +132,13 @@ function TabTable (props) {
 TabTable.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   isModalOpen: PropTypes.bool.isRequired,
+  newConsumedItem: PropTypes.object.isRequired,
   onOpenModal: PropTypes.func.isRequired,
   onCloseModal: PropTypes.func.isRequired,
-  onAddItem: PropTypes.func.isRequired
+  onAddItem: PropTypes.func.isRequired,
+  onChangeItemName: PropTypes.func.isRequired,
+  onChangeItemUnits: PropTypes.func.isRequired,
+  onChangeItemPrice: PropTypes.func.isRequired
 }
 
 TabTable.defaultProps = {

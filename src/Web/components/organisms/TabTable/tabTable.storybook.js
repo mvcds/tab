@@ -4,6 +4,7 @@ const { withKnobs, number, boolean } = require('@storybook/addon-knobs/react')
 const { action } = require('@storybook/addon-actions')
 
 const { FilledWithRandomItems } = require('Entities/Tab/tab.factory')
+const { SingleItem } = require('Objects/ConsumedItem/consumedItem.factory.js')
 
 const TabTable = require('./index')
 
@@ -17,9 +18,13 @@ const options = {
 }
 
 const props = {
+  newConsumedItem: SingleItem(),
   onOpenModal: action('Open Modal'),
   onCloseModal: action('Close Modal'),
-  onAddItem: action('Add Item')
+  onAddItem: action('Add Item'),
+  onChangeItemName: action('Change Name'),
+  onChangeItemUnits: action('Change Units'),
+  onChangeItemPrice: action('Change Price')
 }
 
 storiesOf('Components/Organisms/Tab Table', module)

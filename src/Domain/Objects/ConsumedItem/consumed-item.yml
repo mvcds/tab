@@ -3,11 +3,14 @@ description: What will be shared
 attributes:
   - name: name
     required: true
+    default: "''"
   - name: units
     type: integer
     required: true
+    default: 1
   - name: price
     type: decimal
     required: true
+    default: 0
 aliases:
   - entry

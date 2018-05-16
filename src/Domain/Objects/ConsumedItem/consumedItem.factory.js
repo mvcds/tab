@@ -18,6 +18,11 @@ function ListOfItems (quantity) {
   return factory.buildList(quantity).map(build)
 }
 
+function SingleItem () {
+  return build(factory.build())
+}
+
 module.exports = {
-  ListOfItems
+  ListOfItems,
+  SingleItem
 }
