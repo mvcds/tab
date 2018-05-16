@@ -16,8 +16,11 @@ function changeNewConsumedItem (key, { target }) {
   const { newConsumedItem } = this.state
   const change = { [ key ]: target.value }
 
+  const clone = newConsumedItem.clone(change)
+
   this.setState({
-    newConsumedItem: newConsumedItem.clone(change)
+    newConsumedItem: clone,
+    isValid: clone.isValid
   })
 }
 

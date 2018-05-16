@@ -63,7 +63,7 @@ function ModalBody (props) {
 }
 
 function ItemModal (props) {
-  const { onCloseModal, onAddItem } = props
+  const { onCloseModal, onAddItem, newConsumedItem } = props
 
   return [
     <div key="modal-background" className={baseClass('modal-background')} />,
@@ -80,7 +80,7 @@ function ItemModal (props) {
         <ModalBody {...props} />
         <footer className={baseClass('modal-footer')}>
           <button onClick={onCloseModal}>Cancel</button>
-          <button onClick={onAddItem}>Save</button>
+          <button disabled={newConsumedItem.isInvalid} onClick={onAddItem}>Save</button>
         </footer>
       </div>
     </aside>

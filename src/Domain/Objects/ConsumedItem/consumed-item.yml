@@ -4,6 +4,7 @@ attributes:
   - name: name
     required: true
     default: "''"
+    min: 3
   - name: units
     type: integer
     required: true
