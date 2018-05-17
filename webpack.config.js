@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const bundlePath = path.resolve(__dirname, '/dist/')
 
@@ -47,5 +48,8 @@ module.exports = {
   },
   devtool: 'source-map',
   target: 'web',
-  plugins: [ new webpack.HotModuleReplacementPlugin() ]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([ { from: path.resolve(__dirname, 'src/Web/pwa') } ])
+  ]
 }
