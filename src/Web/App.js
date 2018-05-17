@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+const React = require('react')
 
-import TabTable from './components/organisms/TabTable'
+const TabTable = require('./components/organisms/TabTable')
 
-class App extends Component{
+class App extends React.Component {
   render(){
     return (
       <div className='app'>
@@ -13,4 +13,4 @@ class App extends Component{
   }
 }
 
-export default App
+module.exports = App
