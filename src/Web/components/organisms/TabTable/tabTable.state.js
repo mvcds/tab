@@ -8,8 +8,13 @@ function onChangeModal (isModalOpen) {
   this.setState({ isModalOpen })
 }
 
-function onAddItem () {
-  debugger
+function onAddItem (item) {
+  const { newConsumedItem, items = [] } = this.state
+
+  this.setState({
+    newConsumedItem: new ConsumedItem(),
+    items: [ ...items, newConsumedItem ]
+  })
 }
 
 function changeNewConsumedItem (key, { target }) {

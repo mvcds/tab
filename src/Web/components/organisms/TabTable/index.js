@@ -79,8 +79,8 @@ function ItemModal (props) {
         </header>
         <ModalBody {...props} />
         <footer className={baseClass('modal-footer')}>
-          <button onClick={onCloseModal}>Cancel</button>
-          <button disabled={newConsumedItem.isInvalid} onClick={onAddItem}>Save</button>
+          <button onClick={onCloseModal}>Close</button>
+          <button disabled={newConsumedItem.isInvalid} onClick={onAddItem}>Add</button>
         </footer>
       </div>
     </aside>
