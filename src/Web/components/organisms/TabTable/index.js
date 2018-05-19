@@ -2,6 +2,8 @@ const React = require('react')
 const PropTypes = require('prop-types')
 const bem = require('bem-classname')
 
+const Modal = require('Molecules/Modal')
+
 require('./tabTable.styl')
 
 const baseClass = bem.bind(null, 'tab-table')
@@ -32,57 +34,51 @@ function ItemEntry ({ name, units, price, subTotal }) {
   )
 }
 
-function ModalBody (props) {
-  const { newConsumedItem, onChangeItemName, onChangeItemUnits, onChangeItemPrice } = props
-
+function ItemModalFooter ({ onCloseModal, onAddItem, newConsumedItem }) {
   return (
-    <form className={baseClass('modal-body')}>
-      <input
-        placeholder="Name"
-        value={newConsumedItem.name}
-        onChange={onChangeItemName}
-      />
-      <input
-        type="number"
-        placeholder="Units"
-        min="0"
-        step="1"
-        value={newConsumedItem.units}
-        onChange={onChangeItemUnits}
-      />
-      <input
-        type="number"
-        placeholder="Price"
-        min="0"
-        step="0.01"
-        value={newConsumedItem.price}
-        onChange={onChangeItemPrice}
-      />
-    </form>
+    <React.Fragment>
+      <button onClick={onCloseModal}>Close</button>
+      <button disabled={newConsumedItem.isInvalid} onClick={onAddItem}>Add</button>
+    </React.Fragment>
   )
 }
 
 function ItemModal (props) {
-  const { onCloseModal, onAddItem, newConsumedItem } = props
+  const {
+    onCloseModal,
+    onAddItem,
+    newConsumedItem,
+    onChangeItemName,
+    onChangeItemUnits,
+    onChangeItemPrice
+  } = props
 
   return [
     <div key="modal-background" className={baseClass('modal-background')} />,
     <aside key="modal-content" className={baseClass('modal-content')}>
-      <div className={baseClass('modal')}>
-        <header className={baseClass('modal-header')}>
-          <h2 className={baseClass('modal-title')}>
-            New Item
-          </h2>
-          <span onClick={onCloseModal} className={baseClass('modal-close_icon')}>
-            &times;
-          </span>
-        </header>
-        <ModalBody {...props} />
-        <footer className={baseClass('modal-footer')}>
-          <button onClick={onCloseModal}>Close</button>
-          <button disabled={newConsumedItem.isInvalid} onClick={onAddItem}>Add</button>
-        </footer>
-      </div>
+      <Modal {...props} title="New Item" ModalFooter={ItemModalFooter}>
+        <input
+          placeholder="Name"
+          value={newConsumedItem.name}
+          onChange={onChangeItemName}
+        />
+        <input
+          type="number"
+          placeholder="Units"
+          min="0"
+          step="1"
+          value={newConsumedItem.units}
+          onChange={onChangeItemUnits}
+        />
+        <input
+          type="number"
+          placeholder="Price"
+          min="0"
+          step="0.01"
+          value={newConsumedItem.price}
+          onChange={onChangeItemPrice}
+        />
+      </Modal>
     </aside>
   ]
 }
