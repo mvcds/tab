@@ -31,9 +31,9 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.css'],
     alias: {
-      Styles: path.resolve(__dirname, 'src/Web/styles'),
       Entities: path.resolve(__dirname, 'src/Domain/Entities'),
       Objects: path.resolve(__dirname, 'src/Domain/Objects'),
+      Styles: path.resolve(__dirname, 'src/Web/styles'),
       Organisms: path.resolve(__dirname, 'src/Web/components/organisms'),
       joi: 'joi-browser'
     }
