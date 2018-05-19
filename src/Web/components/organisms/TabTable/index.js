@@ -96,7 +96,7 @@ function TabTable (props) {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan="4">
+            <td colSpan="4" className="guterless">
               <button onClick={onOpenModal} className={baseClass('button')}>
                 Add Item
               </button>
