@@ -2,7 +2,7 @@ const React = require('react')
 const PropTypes = require('prop-types')
 const bem = require('bem-classname')
 
-const Currency = require('Atoms/Currency')
+const NumberAsText = require('Atoms/NumberAsText')
 const Modal = require('Molecules/Modal')
 
 require('./tabTable.styl')
@@ -13,12 +13,14 @@ function ItemEntry ({ name, units, price, subTotal }) {
   return (
     <tr key={name}>
       <td>{name}</td>
-      <td>{units}</td>
       <td>
-        <Currency value={price} />
+        <NumberAsText value={units} />
+      </td>
+      <td>
+        <NumberAsText value={price} />
       </td>
       <th>
-        <Currency value={subTotal} />
+        <NumberAsText value={subTotal} />
       </th>
     </tr>
   )
@@ -105,7 +107,7 @@ function TabTable (props) {
           <tr>
             <td>Total</td>
             <th colSpan="3">
-              <Currency value={items.reduce(sumItems, 0)} />
+              <NumberAsText value={items.reduce(sumItems, 0)} />
             </th>
           </tr>
         </tfoot>

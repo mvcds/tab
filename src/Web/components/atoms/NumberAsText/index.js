@@ -6,12 +6,12 @@ const OPTIONS = {
   maximumFractionDigits: 2
 }
 
-function Currency ({ language, value }) {
+function NumberAsText ({ language, value }) {
   return parseFloat(value)
     .toLocaleString(language, OPTIONS)
 }
 
-Currency.propTypes = {
+NumberAsText.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
@@ -19,8 +19,8 @@ Currency.propTypes = {
   language: PropTypes.string
 }
 
-Currency.defaultProps = {
+NumberAsText.defaultProps = {
   language: 'en-US'
 }
 
-module.exports = Currency
+module.exports = NumberAsText
