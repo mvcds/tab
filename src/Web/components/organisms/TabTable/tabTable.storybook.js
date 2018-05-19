@@ -8,7 +8,7 @@ const { SingleItem } = require('Objects/ConsumedItem/consumedItem.factory.js')
 
 const TabTable = require('./index')
 
-const MIN = 1
+const MIN = 0
 
 const options = {
   range: true,
@@ -18,7 +18,6 @@ const options = {
 }
 
 const props = {
-  newConsumedItem: SingleItem(),
   onOpenModal: action('Open Modal'),
   onCloseModal: action('Close Modal'),
   onAddItem: action('Add Item'),
@@ -29,16 +28,13 @@ const props = {
 
 storiesOf('Components/Organisms/Tab Table', module)
   .addDecorator(withKnobs)
-  .add('Empty', () => {
-    const isModalOpen = boolean('Open modal?', false)
-
-    return (<TabTable isModalOpen={isModalOpen} {...props} />)
-  })
-  .add('Filled', () => {
+  .add('Default', () => {
     const isModalOpen = boolean('Open modal?', false)
     const numberOfItems = number('Items', MIN, options)
 
     const tab = FilledWithRandomItems(numberOfItems)
 
-    return (<TabTable isModalOpen={isModalOpen} {...tab} {...props} />)
+    const newConsumedItem = SingleItem()
+
+    return (<TabTable isModalOpen={isModalOpen} newConsumedItem={newConsumedItem} {...tab} {...props} />)
   })
