@@ -3,6 +3,7 @@
 .tab-table
   &__table
     width 100%
+    padding --base-size
 
     tbody,
     tfoot
@@ -11,9 +12,6 @@
 
     button
       width 100%
-      padding 8px
-      border-color black
-      cursor pointer
 
   &__modal-background,
   &__modal-content
@@ -39,21 +37,24 @@
   &__modal,
   &__modal-body
     display grid
-    grid-gap 8px
+    grid-gap --base-size
 
   &__modal
     background white
-    border-radius 4px
-    padding 8px 16px
+    border-radius --base-size
+    padding --base-size (--base-size * 2)
     width 80%
 
   &__modal-header
     display flex
     justify-content space-between
+    align-items center
 
-  &__modal-body
-    input
-      padding 8px
+  &__modal-title
+    padding 0
+
+  &__modal-close_icon
+    font-size 2em
 
   &__modal-footer
     text-align right

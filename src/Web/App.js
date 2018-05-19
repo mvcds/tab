@@ -5,10 +5,10 @@ const TabTable = require('./components/organisms/TabTable')
 class App extends React.Component {
   render(){
     return (
-      <div className='app'>
+      <React.Fragment>
         <h1>Tab</h1>
         <TabTable />
-      </div>
+      </React.Fragment>
     )
   }
 }

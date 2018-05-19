@@ -70,10 +70,10 @@ function ItemModal (props) {
     <aside key="modal-content" className={baseClass('modal-content')}>
       <div className={baseClass('modal')}>
         <header className={baseClass('modal-header')}>
-          <span>
+          <h2 className={baseClass('modal-title')}>
             New Item
-          </span>
-          <span onClick={onCloseModal}>
+          </h2>
+          <span onClick={onCloseModal} className={baseClass('modal-close_icon')}>
             &times;
           </span>
         </header>
