@@ -7,7 +7,8 @@ const OPTIONS = {
 }
 
 function Currency ({ language, value }) {
-  return value.toLocaleString(language, OPTIONS)
+  return parseFloat(value)
+    .toLocaleString(language, OPTIONS)
 }
 
 Currency.propTypes = {
