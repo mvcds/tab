@@ -2,22 +2,12 @@ const React = require('react')
 const PropTypes = require('prop-types')
 const bem = require('bem-classname')
 
+const Currency = require('Atoms/Currency')
 const Modal = require('Molecules/Modal')
 
 require('./tabTable.styl')
 
 const baseClass = bem.bind(null, 'tab-table')
-
-const LANGUAGE = 'en-US'
-const OPTIONS = {
-  useGrouping: true,
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2
-}
-
-function Currency ({ value }) {
-  return value.toLocaleString(LANGUAGE, OPTIONS)
-}
 
 function ItemEntry ({ name, units, price, subTotal }) {
   return (

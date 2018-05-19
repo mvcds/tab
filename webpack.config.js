@@ -34,6 +34,7 @@ module.exports = {
       Entities: path.resolve(__dirname, 'src/Domain/Entities'),
       Objects: path.resolve(__dirname, 'src/Domain/Objects'),
       Styles: path.resolve(__dirname, 'src/Web/styles'),
+      Atoms: path.resolve(__dirname, 'src/Web/components/atoms'),
       Organisms: path.resolve(__dirname, 'src/Web/components/organisms'),
       Molecules: path.resolve(__dirname, 'src/Web/components/molecules'),
       joi: 'joi-browser'
