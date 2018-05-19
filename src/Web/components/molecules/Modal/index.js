@@ -47,7 +47,7 @@ function Modal (props) {
 
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  children: PropTypes.node.isRequired,
   onCloseModal: PropTypes.func.isRequired,
   ModalFooter: PropTypes.func
 }

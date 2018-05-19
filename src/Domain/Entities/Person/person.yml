@@ -1,0 +1,8 @@
+name: Person
+description: Someone who shares the tab
+attributes:
+  - name: name
+    type: string
+    min: 3
+    default: "''"
+    required: true
