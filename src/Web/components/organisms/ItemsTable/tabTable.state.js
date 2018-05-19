@@ -2,7 +2,7 @@ const React = require('react')
 
 const ConsumedItem = require('Objects/ConsumedItem')
 
-const TabTable = require('./index')
+const ItemsTable = require('./index')
 
 function onChangeModal (isModalOpen) {
   this.setState({ isModalOpen })
@@ -29,7 +29,7 @@ function changeNewConsumedItem (key, { target }) {
   })
 }
 
-class TabTableState extends React.Component {
+class ItemsTableState extends React.Component {
   constructor (props) {
     super(props)
 
@@ -50,7 +50,7 @@ class TabTableState extends React.Component {
 
   render () {
     return (
-      <TabTable
+      <ItemsTable
         {...this.props}
         {...this.state}
         {...this.methods}
@@ -59,4 +59,4 @@ class TabTableState extends React.Component {
   }
 }
 
-module.exports = TabTableState
+module.exports = ItemsTableState

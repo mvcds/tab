@@ -79,7 +79,7 @@ function sumItems (total, { subTotal }) {
   return total + subTotal
 }
 
-function TabTable (props) {
+function ItemsTable (props) {
   const { items, isModalOpen, onOpenModal } = props
 
   return (
@@ -117,7 +117,7 @@ function TabTable (props) {
   )
 }
 
-TabTable.propTypes = {
+ItemsTable.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   newConsumedItem: PropTypes.object.isRequired,
@@ -129,8 +129,8 @@ TabTable.propTypes = {
   onChangeItemPrice: PropTypes.func.isRequired
 }
 
-TabTable.defaultProps = {
+ItemsTable.defaultProps = {
   items: []
 }
 
-module.exports = TabTable
+module.exports = ItemsTable

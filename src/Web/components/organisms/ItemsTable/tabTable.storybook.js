@@ -6,7 +6,7 @@ const { action } = require('@storybook/addon-actions')
 const { FilledWithRandomItems } = require('Entities/Tab/tab.factory')
 const { SingleItem } = require('Objects/ConsumedItem/consumedItem.factory.js')
 
-const TabTable = require('./index')
+const ItemsTable = require('./index')
 
 const MIN = 0
 
@@ -26,7 +26,7 @@ const props = {
   onChangeItemPrice: action('Change Price')
 }
 
-storiesOf('Components/Organisms/Tab Table', module)
+storiesOf('Components/Organisms/Items Table', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
     const isModalOpen = boolean('Open modal?', false)
@@ -36,5 +36,5 @@ storiesOf('Components/Organisms/Tab Table', module)
 
     const newConsumedItem = SingleItem()
 
-    return (<TabTable isModalOpen={isModalOpen} newConsumedItem={newConsumedItem} {...tab} {...props} />)
+    return (<ItemsTable isModalOpen={isModalOpen} newConsumedItem={newConsumedItem} {...tab} {...props} />)
   })

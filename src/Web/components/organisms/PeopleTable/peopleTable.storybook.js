@@ -6,7 +6,7 @@ const { action } = require('@storybook/addon-actions')
 const { FilledWithRandomPeople } = require('Entities/Tab/tab.factory')
 const { SinglePerson } = require('Entities/Person/person.factory.js')
 
-const TabTable = require('./index')
+const PeopleTable = require('./index')
 
 const MIN = 0
 
@@ -43,7 +43,7 @@ storiesOf('Components/Organisms/People Table', module)
     const newPerson = SinglePerson()
 
     return (
-      <TabTable
+      <PeopleTable
         isModalOpen={isModalOpen}
         newPerson={newPerson}
         total={total}

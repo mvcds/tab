@@ -1,6 +1,6 @@
 const React = require('react')
 
-const TabTable = require('Organisms/TabTable')
+const ItemsTable = require('Organisms/ItemsTable')
 const PeopleTable = require('Organisms/PeopleTable')
 
 class App extends React.Component {
@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <h1>Tab</h1>
-        <TabTable />
+        <ItemsTable />
         <hr />
         <PeopleTable />
       </React.Fragment>
