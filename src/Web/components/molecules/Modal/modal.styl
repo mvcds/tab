@@ -1,11 +1,11 @@
 @import '~Styles/index'
 
 .modal
+  reset(--base-size (--base-size * 2))
   display grid
   grid-gap --base-size
   background white
   border-radius --base-size
-  padding --base-size (--base-size * 2)
   width 80%
 
   &__content
