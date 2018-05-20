@@ -1,0 +1,46 @@
+@import '~Styles/index'
+
+.tabs
+  reset()
+  display flex
+  flex-direction column
+
+  &__header
+    display flex
+
+  &__label
+    reset()
+    flex 1
+    text-align center
+    border 1px solid transparent
+    border-bottom-color --blured-text-color
+    cursor pointer
+    z-index 10
+
+    &:hover
+      color --blured-text-color
+
+    &--active
+      border-radius --base-size --base-size 0 0
+      border-color --blured-text-color
+      border-top-width 2px
+      border-bottom-color transparent
+      cursor default
+
+      &:hover
+        color --text-color
+
+    &--disabled
+      color --blured-text-color
+      cursor not-allowed
+
+    &--active.tabs__label--disabled
+      color --text-color
+      cursor default
+
+  &__content
+    reset((--base-size * 3) --base-size)
+    z-index 0
+    border 1px solid --blured-text-color
+    border-top-color transparent
+    border-radius 0 0 --base-size --base-size

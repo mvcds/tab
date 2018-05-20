@@ -1,0 +1,6 @@
+{
+  "name": "Tabs",
+  "description": "A way to show tabs",
+  "main": "./tabs.state.js",
+  "private": true
+}
