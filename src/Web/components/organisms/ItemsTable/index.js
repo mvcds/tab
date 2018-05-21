@@ -5,9 +5,9 @@ const bem = require('bem-classname')
 const NumberAsText = require('Atoms/NumberAsText')
 const Modal = require('Molecules/Modal')
 
-require('./tabTable.styl')
+require('./itemsTable.styl')
 
-const baseClass = bem.bind(null, 'tab-table')
+const baseClass = bem.bind(null, 'items-table')
 
 function ItemEntry ({ name, units, price, subTotal }) {
   return (
