@@ -1,17 +1,10 @@
 const Joi = require('joi')
 
+const GetDefaults = require('Services/GetDefaults')
+
 const SCHEMA = require('./consumed-item.joi')
 
-const DEFAULTS = Object.entries(SCHEMA)
-  .reduce(createDefault, {})
-
-function createDefault (acc, [ key, value ]) {
-  if (value._flags.default === undefined) return acc
-
-  return Object.assign({}, acc, {
-    [ key ]: value._flags.default
-  })
-}
+const DEFAULTS = GetDefaults(SCHEMA)
 
 function clone (change) {
   const cloned = Object.assign({}, this, change)

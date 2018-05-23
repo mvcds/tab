@@ -33,6 +33,7 @@ module.exports = {
     alias: {
       Entities: path.resolve(__dirname, 'src/Domain/Entities'),
       Objects: path.resolve(__dirname, 'src/Domain/Objects'),
+      Services: path.resolve(__dirname, 'src/Domain/Services'),
       Styles: path.resolve(__dirname, 'src/Web/styles'),
       Atoms: path.resolve(__dirname, 'src/Web/components/atoms'),
       Organisms: path.resolve(__dirname, 'src/Web/components/organisms'),
