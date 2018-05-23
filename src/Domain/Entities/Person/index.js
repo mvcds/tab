@@ -1,6 +1,7 @@
 const Joi = require('joi')
 
 const GetDefaults = require('Services/GetDefaults')
+const InvalidableObject = require('Objects/InvalidableObject')
 
 const SCHEMA = require('./person.joi')
 
@@ -12,25 +13,8 @@ function clone (change) {
   return new Person(cloned)
 }
 
-function getErrors () {
-  const { error } = Joi.validate(this, SCHEMA, {
-    allowUnknown: true
-  })
-
-  if (!error) return []
-
-  return error.details
-}
-
-function isInvalid () {
-  return this.errors.length > 0
-}
-
 function Person (data = DEFAULTS) {
-  Object.assign(this, data)
-
-  Object.defineProperty(this, 'errors', { get: getErrors.bind(this) })
-  Object.defineProperty(this, 'isInvalid', { get: isInvalid.bind(this) })
+  Object.assign(this, data, new InvalidableObject(this, SCHEMA))
 
   this.clone = clone.bind(this)
 }
