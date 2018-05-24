@@ -5,10 +5,12 @@ attributes:
     type: array
     of: Consumed Item
     required: true
+    default: '[]'
   - name: people
     type: array
     of: Person
     required: true
+    default: '[]'
 aliases:
   - bill
   - account
