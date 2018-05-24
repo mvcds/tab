@@ -75,12 +75,8 @@ function ItemModal (props) {
   ]
 }
 
-function sumItems (total, { subTotal }) {
-  return total + subTotal
-}
-
 function ItemsTable (props) {
-  const { items, isModalOpen, onOpenModal } = props
+  const { items, isModalOpen, onOpenModal, total } = props
 
   return (
     <div className={baseClass()}>
@@ -107,7 +103,7 @@ function ItemsTable (props) {
           <tr>
             <td>Total</td>
             <th colSpan="3">
-              <NumberAsText value={items.reduce(sumItems, 0)} />
+              <NumberAsText value={total} />
             </th>
           </tr>
         </tfoot>
@@ -119,6 +115,7 @@ function ItemsTable (props) {
 
 ItemsTable.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  total: PropTypes.number.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   newConsumedItem: PropTypes.object.isRequired,
   onOpenModal: PropTypes.func.isRequired,

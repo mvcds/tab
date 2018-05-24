@@ -16,8 +16,18 @@ function add (list, item) {
   this[list].push(item)
 }
 
+function addSubtotal (total, { subTotal }) {
+  return total + subTotal
+}
+
+function getTotal () {
+  return this.items.reduce(addSubtotal, 0)
+}
+
 function Tab (data = DEFAULTS) {
   Object.assign(this, data)
+
+  Object.defineProperty(this, 'total', { get: getTotal.bind(this) })
 
   this.clone = clone.bind(this)
   this.addItem = add.bind(this, 'items')

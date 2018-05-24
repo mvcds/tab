@@ -6,12 +6,14 @@ const PeopleTable = require('Organisms/PeopleTable')
 const Tabs = require('Molecules/Tabs')
 
 function Tab ({ tab, onAddItem, onAddPerson }) {
+  const { total } = tab
+
   return (
     <React.Fragment>
       <h1>Tab</h1>
       <Tabs group="main-tabs">
-        <ItemsTable title="Items" {...tab} onAddItem={onAddItem} />
-        <PeopleTable title="People" {...tab} onAddPerson={onAddPerson} />
+        <ItemsTable title="Items" {...tab} onAddItem={onAddItem} total={total} />
+        <PeopleTable title="People" {...tab} onAddPerson={onAddPerson} total={total} />
       </Tabs>
     </React.Fragment>
   )
