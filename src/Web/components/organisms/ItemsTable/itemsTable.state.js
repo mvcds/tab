@@ -9,11 +9,12 @@ function onChangeModal (isModalOpen) {
 }
 
 function onAddItem (item) {
-  const { newConsumedItem, items = [] } = this.state
+  const { newConsumedItem } = this.state
+
+  this.props.onAddItem(newConsumedItem)
 
   this.setState({
-    newConsumedItem: new ConsumedItem(),
-    items: [ ...items, newConsumedItem ]
+    newConsumedItem: new ConsumedItem()
   })
 }
 

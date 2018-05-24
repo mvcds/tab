@@ -1,0 +1,6 @@
+{
+  "name": "Tab",
+  "description": "The main component",
+  "main": "./tab.state.js",
+  "private": true
+}

@@ -9,11 +9,12 @@ function onChangeModal (isModalOpen) {
 }
 
 function onAddPerson (item) {
-  const { newPerson, people = [] } = this.state
+  const { newPerson } = this.state
+
+  this.props.onAddPerson(newPerson)
 
   this.setState({
-    newPerson: new Person(),
-    people: [ ...people, newPerson ]
+    newPerson: new Person()
   })
 }
 
