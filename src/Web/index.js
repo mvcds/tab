@@ -1,9 +1,9 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 
-const App = require('Organisms/App')
+const Tab = require('Organisms/Tab')
 
 ReactDOM.render(
-  <App />,
+  <Tab />,
   document.getElementById('app')
 )

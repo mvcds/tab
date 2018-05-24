@@ -5,7 +5,7 @@ const ItemsTable = require('Organisms/ItemsTable')
 const PeopleTable = require('Organisms/PeopleTable')
 const Tabs = require('Molecules/Tabs')
 
-function App ({ tab }) {
+function Tab ({ tab }) {
   return (
     <React.Fragment>
       <h1>Tab</h1>
@@ -17,8 +17,8 @@ function App ({ tab }) {
   )
 }
 
-App.propTypes = {
+Tab.propTypes = {
   tab: PropTypes.object.isRequired
 }
 
-module.exports = App
+module.exports = Tab
