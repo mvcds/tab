@@ -1,6 +1,7 @@
 const React = require('react')
 
 const Tab = require('Entities/Tab')
+const Person = require('Entities/Person')
 
 const TabComponent = require('./index')
 
@@ -18,8 +19,10 @@ class TabState extends React.Component {
   constructor (props) {
     super(props)
 
+    const you = new Person({ name: '(You)' })
+
     this.state = {
-      tab: new Tab()
+      tab: new Tab({ people: [ you ] })
     }
 
     this.methods = {

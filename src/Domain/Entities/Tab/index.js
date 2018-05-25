@@ -24,8 +24,8 @@ function getTotal () {
   return this.items.reduce(addSubtotal, 0)
 }
 
-function Tab (data = DEFAULTS) {
-  Object.assign(this, data)
+function Tab (data) {
+  Object.assign(this, DEFAULTS, data)
 
   Object.defineProperty(this, 'total', { get: getTotal.bind(this) })
 
