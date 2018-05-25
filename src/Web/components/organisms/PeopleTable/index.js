@@ -5,6 +5,8 @@ const bem = require('bem-classname')
 const NumberAsText = require('Atoms/NumberAsText')
 const Modal = require('Molecules/Modal')
 
+const PersonModal = require('Organisms/PersonModal')
+
 require('./peopleTable.styl')
 
 const baseClass = bem.bind(null, 'people-table')
@@ -20,35 +22,6 @@ function PersonEntry ({ name }, index, { length }) {
         <NumberAsText value={this.perPerson.value} />
       </th>
     </tr>
-  )
-}
-
-function PersonModalFooter ({ onCloseModal, onAddPerson, newPerson }) {
-  return (
-    <React.Fragment>
-      <button onClick={onCloseModal}>Close</button>
-      <button disabled={newPerson.isInvalid} onClick={onAddPerson}>Add</button>
-    </React.Fragment>
-  )
-}
-
-function PersonModal (props) {
-  const {
-    onCloseModal,
-    onAddPerson,
-    newPerson,
-    onChangePersonName
-  } = props
-
-  return (
-    <Modal {...props} title="New Person" Footer={PersonModalFooter}>
-      <input
-        placeholder="Name"
-        value={newPerson.name}
-        onChange={onChangePersonName}
-        autoFocus
-      />
-    </Modal>
   )
 }
 
