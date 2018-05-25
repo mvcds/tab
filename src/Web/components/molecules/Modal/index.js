@@ -14,23 +14,11 @@ const DEFAULT_FOOTER = function ({ onCloseModal }) {
   )
 }
 
-function Footer (props) {
-  const { ModalFooter } = props
+function Dialog (props) {
+  const { title, children, onCloseModal, Footer } = props
 
   return (
-    <footer className={baseClass('footer')}>
-      <ModalFooter {...props} />
-    </footer>
-  )
-}
-
-function Modal (props) {
-  const { title, children, onCloseModal, ModalFooter } = props
-
-  const footer = ModalFooter ? ModalFooter : DEFAULT_FOOTER
-
-  return (
-    <div className={baseClass()}>
+    <div className={baseClass('dialog')} role="dialog">
       <header className={baseClass('header')}>
         <h2 className={baseClass('title')}>{title}</h2>
         <span onClick={onCloseModal} className={baseClass('close-icon')}>
@@ -40,7 +28,22 @@ function Modal (props) {
       <div className={baseClass('content')}>
         {children}
       </div>
-      <Footer {...props} ModalFooter={footer} />
+      <footer className={baseClass('footer')}>
+        <Footer {...props} />
+      </footer>
+    </div>
+  )
+}
+
+function Modal (props) {
+  const { onCloseModal, Footer } = props
+
+  const footer = Footer ? Footer : DEFAULT_FOOTER
+
+  return (
+    <div className={baseClass()}>
+      <div className={baseClass('background')} onClick={onCloseModal} />
+      <Dialog {...props} Footer={footer} />
     </div>
   )
 }
@@ -49,7 +52,7 @@ Modal.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   onCloseModal: PropTypes.func.isRequired,
-  ModalFooter: PropTypes.func
+  Footer: PropTypes.func
 }
 
 module.exports = Modal

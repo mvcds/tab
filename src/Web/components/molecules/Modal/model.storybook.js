@@ -36,7 +36,7 @@ storiesOf('Components/Molecules/Modal', module)
     const title = text('Title', 'I am a customized modal')
 
     return (
-      <Modal title={title} ModalFooter={customizedFooter} {...props}>
+      <Modal title={title} Footer={customizedFooter} {...props}>
         <p>
           {lorem.paragraph()}
         </p>

@@ -40,19 +40,16 @@ function PersonModal (props) {
     onChangePersonName
   } = props
 
-  return [
-    <div key="modal-background" className={baseClass('modal-background')} />,
-    <aside key="modal-content" className={baseClass('modal-content')}>
-      <Modal {...props} title="New Person" ModalFooter={PersonModalFooter}>
-        <input
-          placeholder="Name"
-          value={newPerson.name}
-          onChange={onChangePersonName}
-          autoFocus
-        />
-      </Modal>
-    </aside>
-  ]
+  return (
+    <Modal {...props} title="New Person" Footer={PersonModalFooter}>
+      <input
+        placeholder="Name"
+        value={newPerson.name}
+        onChange={onChangePersonName}
+        autoFocus
+      />
+    </Modal>
+  )
 }
 
 function PeopleTable (props) {

@@ -45,35 +45,32 @@ function ItemModal (props) {
     onChangeItemPrice
   } = props
 
-  return [
-    <div key="modal-background" className={baseClass('modal-background')} />,
-    <aside key="modal-content" className={baseClass('modal-content')}>
-      <Modal {...props} title="New Item" ModalFooter={ItemModalFooter}>
-        <input
-          placeholder="Name"
-          value={newConsumedItem.name}
-          onChange={onChangeItemName}
-          autoFocus
-        />
-        <input
-          type="number"
-          placeholder="Units"
-          min="0"
-          step="1"
-          value={newConsumedItem.units}
-          onChange={onChangeItemUnits}
-        />
-        <input
-          type="number"
-          placeholder="Price"
-          min="0"
-          step="0.01"
-          value={newConsumedItem.price}
-          onChange={onChangeItemPrice}
-        />
-      </Modal>
-    </aside>
-  ]
+  return (
+    <Modal {...props} title="New Item" Footer={ItemModalFooter}>
+      <input
+        placeholder="Name"
+        value={newConsumedItem.name}
+        onChange={onChangeItemName}
+        autoFocus
+      />
+      <input
+        type="number"
+        placeholder="Units"
+        min="0"
+        step="1"
+        value={newConsumedItem.units}
+        onChange={onChangeItemUnits}
+      />
+      <input
+        type="number"
+        placeholder="Price"
+        min="0"
+        step="0.01"
+        value={newConsumedItem.price}
+        onChange={onChangeItemPrice}
+      />
+    </Modal>
+  )
 }
 
 function ItemsTable (props) {
