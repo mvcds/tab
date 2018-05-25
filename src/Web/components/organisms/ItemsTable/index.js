@@ -53,6 +53,7 @@ function ItemModal (props) {
           placeholder="Name"
           value={newConsumedItem.name}
           onChange={onChangeItemName}
+          autoFocus
         />
         <input
           type="number"

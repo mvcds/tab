@@ -48,6 +48,7 @@ function PersonModal (props) {
           placeholder="Name"
           value={newPerson.name}
           onChange={onChangePersonName}
+          autoFocus
         />
       </Modal>
     </aside>
