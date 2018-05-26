@@ -1,0 +1,6 @@
+{
+  "name": "Person Modal",
+  "description": "CRUD",
+  "main": "./personModal.state.js",
+  "private": true
+}

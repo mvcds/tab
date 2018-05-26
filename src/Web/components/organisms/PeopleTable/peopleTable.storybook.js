@@ -4,7 +4,6 @@ const { withKnobs, number, boolean } = require('@storybook/addon-knobs/react')
 const { action } = require('@storybook/addon-actions')
 
 const { FilledWithRandomPeople } = require('Entities/Tab/tab.factory')
-const { SinglePerson } = require('Entities/Person/person.factory.js')
 
 const PeopleTable = require('./index')
 
@@ -26,9 +25,7 @@ const TOTAL = {
 
 const props = {
   onOpenModal: action('Open Modal'),
-  onCloseModal: action('Close Modal'),
-  onAddPerson: action('Add Person'),
-  onChangePersonName: action('Change Name')
+  onCloseModal: action('Close Modal')
 }
 
 storiesOf('Components/Organisms/People Table', module)
@@ -40,12 +37,9 @@ storiesOf('Components/Organisms/People Table', module)
 
     const tab = FilledWithRandomPeople(numberOfPeople)
 
-    const newPerson = SinglePerson()
-
     return (
       <PeopleTable
         isModalOpen={isModalOpen}
-        newPerson={newPerson}
         total={total}
         {...tab}
         {...props}

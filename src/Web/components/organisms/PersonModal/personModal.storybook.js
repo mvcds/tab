@@ -10,15 +10,15 @@ const PersonModal = require('./index')
 const props = {
   onCloseModal: action('Close Modal'),
   onAddPerson: action('Add Person'),
-  onChangePersonName: action('Change Name')
+  onChangeName: action('Change Name')
 }
 
 storiesOf('Components/Organisms/Person Modal', module)
   .addDecorator(withKnobs)
-  .add('New', () => {
+  .add('New Person', () => {
     const name = text('Name', '')
 
-    const newPerson = SinglePerson({ name })
+    const person = SinglePerson({ name })
 
-    return (<PersonModal {...props} newPerson={newPerson} />)
+    return (<PersonModal {...props} person={person} />)
   })

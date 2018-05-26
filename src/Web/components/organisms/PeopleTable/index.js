@@ -26,7 +26,7 @@ function PersonEntry ({ name }, index, { length }) {
 }
 
 function PeopleTable (props) {
-  const { people, isModalOpen, onOpenModal, total } = props
+  const { people, isModalOpen, total, onOpenModal } = props
 
   const perPerson = {
     percent: 100 / people.length,
@@ -74,11 +74,8 @@ PeopleTable.propTypes = {
   people: PropTypes.arrayOf(PropTypes.object).isRequired,
   total: PropTypes.number.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
-  newPerson: PropTypes.object.isRequired,
   onOpenModal: PropTypes.func.isRequired,
-  onCloseModal: PropTypes.func.isRequired,
-  onAddPerson: PropTypes.func.isRequired,
-  onChangePersonName: PropTypes.func.isRequired
+  onCloseModal: PropTypes.func.isRequired
 }
 
 PeopleTable.defaultProps = {

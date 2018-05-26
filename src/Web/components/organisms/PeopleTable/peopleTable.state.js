@@ -1,33 +1,9 @@
 const React = require('react')
 
-const Person = require('Entities/Person')
-
 const PeopleTable = require('./index')
 
 function onChangeModal (isModalOpen) {
   this.setState({ isModalOpen })
-}
-
-function onAddPerson (item) {
-  const { newPerson } = this.state
-
-  this.props.onAddPerson(newPerson)
-
-  this.setState({
-    newPerson: new Person()
-  })
-}
-
-function changeNewPerson (key, { target }) {
-  const { newPerson } = this.state
-  const change = { [ key ]: target.value }
-
-  const clone = newPerson.clone(change)
-
-  this.setState({
-    newPerson: clone,
-    isValid: clone.isValid
-  })
 }
 
 class PeopleTableState extends React.Component {
@@ -35,15 +11,12 @@ class PeopleTableState extends React.Component {
     super(props)
 
     this.state = {
-      isModalOpen: false,
-      newPerson: new Person()
+      isModalOpen: false
     }
 
     this.methods = {
       onOpenModal: onChangeModal.bind(this, true),
-      onCloseModal: onChangeModal.bind(this, false),
-      onAddPerson: onAddPerson.bind(this),
-      onChangePersonName: changeNewPerson.bind(this, 'name')
+      onCloseModal: onChangeModal.bind(this, false)
     }
   }
 
