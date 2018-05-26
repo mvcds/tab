@@ -1,0 +1,6 @@
+{
+  "name": "Item Modal",
+  "description": "CRUD",
+  "main": "./itemModal.state.js",
+  "private": true
+}
