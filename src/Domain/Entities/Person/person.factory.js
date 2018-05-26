@@ -16,8 +16,8 @@ function ListOfPeople (quantity) {
   return factory.buildList(quantity).map(build)
 }
 
-function SinglePerson () {
-  return build(factory.build())
+function SinglePerson (data) {
+  return build(data)
 }
 
 module.exports = {
