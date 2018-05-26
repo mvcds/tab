@@ -13,8 +13,8 @@ function clone (change) {
   return new Person(cloned)
 }
 
-function Person (data = DEFAULTS) {
-  Object.assign(this, data, new InvalidableObject(this, SCHEMA))
+function Person (data) {
+  Object.assign(this, DEFAULTS, data, new InvalidableObject(this, SCHEMA))
 
   this.clone = clone.bind(this)
 }

@@ -78,9 +78,4 @@ PeopleTable.propTypes = {
   onCloseModal: PropTypes.func.isRequired
 }
 
-PeopleTable.defaultProps = {
-  people: [],
-  total: 0
-}
-
 module.exports = PeopleTable

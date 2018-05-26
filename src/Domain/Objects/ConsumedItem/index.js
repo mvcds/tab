@@ -17,8 +17,8 @@ function getSubTotal () {
   return this.units * this.price
 }
 
-function ConsumedItem (data = DEFAULTS) {
-  Object.assign(this, data, new InvalidableObject(this, SCHEMA))
+function ConsumedItem (data) {
+  Object.assign(this, DEFAULTS, data, new InvalidableObject(this, SCHEMA))
 
   Object.defineProperty(this, 'subTotal', { get: getSubTotal.bind(this) })
 
