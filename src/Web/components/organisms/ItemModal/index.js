@@ -2,11 +2,16 @@ const React = require('react')
 const PropTypes = require('prop-types')
 const bem = require('bem-classname')
 
+const NumberAsText = require('Atoms/NumberAsText')
 const Modal = require('Molecules/Modal')
 
 function ItemModalFooter ({ onCloseModal, onAddItem, item }) {
   return (
     <React.Fragment>
+      <span>
+        Subtotal: <NumberAsText value={item.subTotal} />
+      </span>
+      &nbsp;
       <button onClick={onCloseModal}>Close</button>
       <button disabled={item.isInvalid} onClick={onAddItem}>Add</button>
     </React.Fragment>

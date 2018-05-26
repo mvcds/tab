@@ -10,31 +10,42 @@ const ItemsTable = require('./index')
 
 const MIN = 0
 
-const options = {
+const OPTIONS = {
   range: true,
   min: MIN,
   max: 10,
   step: 1
 }
 
+const TOTAL = {
+  range: true,
+  min: MIN,
+  max: 1500,
+  step: .5
+}
+
 const props = {
   onOpenModal: action('Open Modal'),
-  onCloseModal: action('Close Modal'),
-  onAddItem: action('Add Item'),
-  onChangeItemName: action('Change Name'),
-  onChangeItemUnits: action('Change Units'),
-  onChangeItemPrice: action('Change Price')
+  onCloseModal: action('Close Modal')
 }
 
 storiesOf('Components/Organisms/Items Table', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
     const isModalOpen = boolean('Open modal?', false)
-    const numberOfItems = number('Items', MIN, options)
+    const numberOfItems = number('Items', MIN, OPTIONS)
+    const total = number('Total', MIN, TOTAL)
 
     const tab = FilledWithRandomItems(numberOfItems)
 
     const newConsumedItem = SingleItem()
 
-    return (<ItemsTable isModalOpen={isModalOpen} newConsumedItem={newConsumedItem} {...tab} {...props} />)
+    return (
+      <ItemsTable
+        isModalOpen={isModalOpen}
+        total={total}
+        {...tab}
+        {...props}
+      />
+    )
   })

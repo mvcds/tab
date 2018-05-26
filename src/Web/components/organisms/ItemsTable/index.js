@@ -5,6 +5,8 @@ const bem = require('bem-classname')
 const NumberAsText = require('Atoms/NumberAsText')
 const Modal = require('Molecules/Modal')
 
+const ItemModal = require('Organisms/ItemModal')
+
 require('./itemsTable.styl')
 
 const baseClass = bem.bind(null, 'items-table')
@@ -23,53 +25,6 @@ function ItemEntry ({ name, units, price, subTotal }) {
         <NumberAsText value={subTotal} />
       </th>
     </tr>
-  )
-}
-
-function ItemModalFooter ({ onCloseModal, onAddItem, newConsumedItem }) {
-  return (
-    <React.Fragment>
-      <button onClick={onCloseModal}>Close</button>
-      <button disabled={newConsumedItem.isInvalid} onClick={onAddItem}>Add</button>
-    </React.Fragment>
-  )
-}
-
-function ItemModal (props) {
-  const {
-    onCloseModal,
-    onAddItem,
-    newConsumedItem,
-    onChangeItemName,
-    onChangeItemUnits,
-    onChangeItemPrice
-  } = props
-
-  return (
-    <Modal {...props} title="New Item" Footer={ItemModalFooter}>
-      <input
-        placeholder="Name"
-        value={newConsumedItem.name}
-        onChange={onChangeItemName}
-        autoFocus
-      />
-      <input
-        type="number"
-        placeholder="Units"
-        min="0"
-        step="1"
-        value={newConsumedItem.units}
-        onChange={onChangeItemUnits}
-      />
-      <input
-        type="number"
-        placeholder="Price"
-        min="0"
-        step="0.01"
-        value={newConsumedItem.price}
-        onChange={onChangeItemPrice}
-      />
-    </Modal>
   )
 }
 
@@ -115,17 +70,8 @@ ItemsTable.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   total: PropTypes.number.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
-  newConsumedItem: PropTypes.object.isRequired,
   onOpenModal: PropTypes.func.isRequired,
-  onCloseModal: PropTypes.func.isRequired,
-  onAddItem: PropTypes.func.isRequired,
-  onChangeItemName: PropTypes.func.isRequired,
-  onChangeItemUnits: PropTypes.func.isRequired,
-  onChangeItemPrice: PropTypes.func.isRequired
-}
-
-ItemsTable.defaultProps = {
-  items: []
+  onCloseModal: PropTypes.func.isRequired
 }
 
 module.exports = ItemsTable
