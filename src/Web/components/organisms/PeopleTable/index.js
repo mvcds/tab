@@ -65,7 +65,7 @@ function PeopleTable (props) {
           </tr>
         </tfoot>
       </table>
-      {isModalOpen && <PersonModal {...props} />}
+      {isModalOpen && <PersonModal {...props} status="new" />}
     </div>
   )
 }

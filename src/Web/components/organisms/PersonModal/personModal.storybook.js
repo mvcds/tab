@@ -10,6 +10,7 @@ const PersonModal = require('./index')
 const props = {
   onCloseModal: action('Close Modal'),
   onAddPerson: action('Add Person'),
+  onEditPerson: action('Edit Person'),
   onChangeName: action('Change Name')
 }
 
@@ -20,5 +21,10 @@ storiesOf('Components/Organisms/Person Modal', module)
 
     const person = SinglePerson({ name })
 
-    return (<PersonModal {...props} person={person} />)
+    return (<PersonModal {...props} person={person} status="new" />)
+  })
+  .add('Edit Person', () => {
+    const person = SinglePerson()
+
+    return (<PersonModal {...props} person={person} status="edit" />)
   })

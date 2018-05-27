@@ -4,11 +4,22 @@ const bem = require('bem-classname')
 
 const Modal = require('Molecules/Modal')
 
-function PersonModalFooter ({ onCloseModal, onAddPerson, person }) {
+const STATUSES = ['new', 'edit']
+
+function AddPerson ({ onCloseModal, onAddPerson, person }) {
   return (
     <React.Fragment>
       <button onClick={onCloseModal}>Close</button>
       <button disabled={person.isInvalid} onClick={onAddPerson}>Add</button>
+    </React.Fragment>
+  )
+}
+
+function EditPerson ({ onCloseModal, onEditPerson, person }) {
+  return (
+    <React.Fragment>
+      <button onClick={onCloseModal}>Cancel</button>
+      <button disabled={person.isInvalid} onClick={onEditPerson}>Save</button>
     </React.Fragment>
   )
 }
@@ -18,32 +29,63 @@ function addPerson ({ onAddPerson }) {
   this.refs.name.focus()
 }
 
+function editPerson ({ onEditPerson, onCloseModal }) {
+  onEditPerson()
+  onCloseModal()
+}
+
 class PersonModal extends React.Component {
   constructor (props) {
     super(props)
 
     this.addPerson = addPerson.bind(this, props)
+    this.editPerson = editPerson.bind(this, props)
   }
 
   render () {
+    if (this.props.status === 'new') {
+      return (
+        <Modal
+          {...this.props}
+          title="New Person"
+          Footer={AddPerson}
+          onAddPerson={this.addPerson}
+        >
+          <input
+            placeholder="Name"
+            ref="name"
+            value={this.props.person.name}
+            onChange={this.props.onChangeName}
+            autoFocus
+          />
+        </Modal>
+      )
+    }
+
     return (
-      <Modal {...this.props} title="New Person" Footer={PersonModalFooter} onAddPerson={this.addPerson}>
-        <input
-          placeholder="Name"
-          ref="name"
-          value={this.props.person.name}
-          onChange={this.props.onChangeName}
-          autoFocus
-        />
-      </Modal>
+        <Modal
+          {...this.props}
+          title="Edit Person"
+          Footer={EditPerson}
+          onEditPerson={this.editPerson}
+        >
+          <input
+            placeholder="Name"
+            value={this.props.person.name}
+            onChange={this.props.onChangeName}
+            autoFocus
+          />
+        </Modal>
     )
   }
 }
 
 PersonModal.propTypes = {
   person: PropTypes.object.isRequired,
+  status: PropTypes.oneOf(STATUSES).isRequired,
   onCloseModal: PropTypes.func.isRequired,
   onAddPerson: PropTypes.func.isRequired,
+  onEditPerson: PropTypes.func.isRequired,
   onChangeName: PropTypes.func.isRequired
 }
 
