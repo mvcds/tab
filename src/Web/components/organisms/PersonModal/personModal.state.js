@@ -7,7 +7,9 @@ const PersonModal = require('./index')
 function onAddPerson () {
   const { person } = this.state
 
-  this.props.onAddPerson(person)
+  const clone = person.clone({ createdAt: Date.now() })
+
+  this.props.onAddPerson(clone)
 
   this.setState({
     person: new Person()

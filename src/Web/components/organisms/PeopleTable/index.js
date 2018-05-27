@@ -11,9 +11,9 @@ require('./peopleTable.styl')
 
 const baseClass = bem.bind(null, 'people-table')
 
-function PersonEntry ({ name }, index, { length }) {
+function PersonEntry ({ name, createdAt }, index, { length }) {
   return (
-    <tr key={name}>
+    <tr key={createdAt}>
       <td>{name}</td>
       <td>
         <NumberAsText value={this.perPerson.percent} />

@@ -1,10 +1,11 @@
 const { Factory } = require('rosie')
-const { name } = require('faker')
+const { name, date } = require('faker')
 
 const Person = require('./index')
 
 const factory = new Factory()
   .attr('name', name.findName)
+  .attr('createdAt', date.recent)
 
 function build (data) {
   const fixture = factory.build(data)
