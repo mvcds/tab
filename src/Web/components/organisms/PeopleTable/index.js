@@ -1,11 +1,10 @@
 const React = require('react')
 const PropTypes = require('prop-types')
 const bem = require('bem-classname')
+const { Link: RouterLink } = require('react-router-dom')
 
 const NumberAsText = require('Atoms/NumberAsText')
 const Modal = require('Molecules/Modal')
-
-const PersonModal = require('Organisms/PersonModal')
 
 require('./peopleTable.styl')
 
@@ -26,7 +25,7 @@ function PersonEntry (person, index) {
 }
 
 function PeopleTable (props) {
-  const { people, isModalOpen, total, onOpenModal } = props
+  const { people, total, match, Link } = props
 
   const perPerson = {
     percent: 100 / people.length,
@@ -51,10 +50,10 @@ function PeopleTable (props) {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan="3" className="guterless">
-              <button onClick={onOpenModal} className={baseClass('button')}>
+            <td colSpan="3" className={baseClass('button-wrapper')}>
+              <Link to={`${match.url}person`} className={baseClass('button')}>
                 Add Person
-              </button>
+              </Link>
             </td>
           </tr>
           <tr>
@@ -65,7 +64,6 @@ function PeopleTable (props) {
           </tr>
         </tfoot>
       </table>
-      {isModalOpen && <PersonModal {...props} status="new" />}
     </div>
   )
 }
@@ -73,9 +71,11 @@ function PeopleTable (props) {
 PeopleTable.propTypes = {
   people: PropTypes.arrayOf(PropTypes.object).isRequired,
   total: PropTypes.number.isRequired,
-  isModalOpen: PropTypes.bool.isRequired,
-  onOpenModal: PropTypes.func.isRequired,
-  onCloseModal: PropTypes.func.isRequired
+  Link: PropTypes.func.isRequired
+}
+
+PeopleTable.defaultProps = {
+  Link: RouterLink
 }
 
 module.exports = PeopleTable

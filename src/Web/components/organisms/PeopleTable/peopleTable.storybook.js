@@ -1,6 +1,6 @@
 const React = require('react')
 const { storiesOf } = require('@storybook/react')
-const { withKnobs, number, boolean } = require('@storybook/addon-knobs/react')
+const { withKnobs, number } = require('@storybook/addon-knobs/react')
 const { action } = require('@storybook/addon-actions')
 
 const { FilledWithRandomPeople } = require('Entities/Tab/tab.factory')
@@ -24,14 +24,13 @@ const TOTAL = {
 }
 
 const props = {
-  onOpenModal: action('Open Modal'),
-  onCloseModal: action('Close Modal')
+  match: { url: '' },
+  Link: (p) => <div {...p}>{p.children}</div>
 }
 
 storiesOf('Components/Organisms/People Table', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
-    const isModalOpen = boolean('Open modal?', false)
     const numberOfPeople = number('People', MIN, NUMBER_OF_PEPLE)
     const total = number('Total', MIN, TOTAL)
 
@@ -39,10 +38,9 @@ storiesOf('Components/Organisms/People Table', module)
 
     return (
       <PeopleTable
-        isModalOpen={isModalOpen}
-        total={total}
-        {...tab}
         {...props}
+        {...tab}
+        total={total}
       />
     )
   })

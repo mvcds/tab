@@ -1,20 +1,36 @@
 const React = require('react')
 const PropTypes = require('prop-types')
+const { Route } = require('react-router-dom')
 
 const ItemsTable = require('Organisms/ItemsTable')
 const PeopleTable = require('Organisms/PeopleTable')
 const Tabs = require('Molecules/Tabs')
+const PersonModal = require('Organisms/PersonModal')
+const ItemModal = require('Organisms/ItemModal')
 
-function Tab ({ tab, onAddItem, onAddPerson }) {
+function Wrapper (props) {
+  const { path, component: Component } = props
+  const rest = Object.assign({}, props)
+
+  delete rest.path
+  delete rest.component
+
+  return (
+    <Route path={path} render={(route) => <Component {...rest} {...route} /> } />
+  )
+}
+
+function Tab ({ tab, onAddItem, onAddPerson, match }) {
   const { total } = tab
 
   return (
     <React.Fragment>
-      <h1>Tab</h1>
       <Tabs group="main-tabs">
-        <PeopleTable title="People" {...tab} onAddPerson={onAddPerson} total={total} />
+        <PeopleTable title="People" {...tab} total={total} match={match} />
         <ItemsTable title="Items" {...tab} onAddItem={onAddItem} total={total} />
       </Tabs>
+      <Wrapper path="/person" component={PersonModal} onAddPerson={onAddPerson} />
+      <Route path="/item" component={ItemModal} />
     </React.Fragment>
   )
 }

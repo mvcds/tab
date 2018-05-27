@@ -43,7 +43,7 @@ class PersonModal extends React.Component {
   }
 
   render () {
-    if (this.props.status === 'new') {
+    if (this.props.isNew) {
       return (
         <Modal
           {...this.props}
@@ -82,8 +82,7 @@ class PersonModal extends React.Component {
 
 PersonModal.propTypes = {
   person: PropTypes.object.isRequired,
-  status: PropTypes.oneOf(STATUSES).isRequired,
-  onCloseModal: PropTypes.func.isRequired,
+  isNew: PropTypes.bool.isRequired,
   onAddPerson: PropTypes.func.isRequired,
   onEditPerson: PropTypes.func.isRequired,
   onChangeName: PropTypes.func.isRequired

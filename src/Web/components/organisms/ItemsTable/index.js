@@ -47,7 +47,7 @@ function ItemsTable (props) {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan="4" className="guterless">
+            <td colSpan="4" className={baseClass('button-wrapper')}>
               <button onClick={onOpenModal} className={baseClass('button')}>
                 Add Item
               </button>

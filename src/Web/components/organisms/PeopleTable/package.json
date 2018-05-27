@@ -1,6 +1,0 @@
-{
-  "name": "People Table",
-  "description": "All tab's people",
-  "main": "./peopleTable.state.js",
-  "private": true
-}

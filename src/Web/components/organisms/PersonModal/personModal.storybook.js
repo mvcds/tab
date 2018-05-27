@@ -21,10 +21,10 @@ storiesOf('Components/Organisms/Person Modal', module)
 
     const person = SinglePerson({ name })
 
-    return (<PersonModal {...props} person={person} status="new" />)
+    return (<PersonModal {...props} person={person} isNew />)
   })
   .add('Edit Person', () => {
     const person = SinglePerson()
 
-    return (<PersonModal {...props} person={person} status="edit" />)
+    return (<PersonModal {...props} person={person} />)
   })
