@@ -4,8 +4,6 @@ const bem = require('bem-classname')
 
 const Modal = require('Molecules/Modal')
 
-const STATUSES = ['new', 'edit']
-
 function AddPerson ({ onCloseModal, onAddPerson, person }) {
   return (
     <React.Fragment>

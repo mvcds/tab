@@ -17,6 +17,12 @@ function onAddPerson () {
   })
 }
 
+function onEditPerson () {
+  const { person } = this.state
+
+  this.props.onEditPerson(person)
+}
+
 function changePerson (key, { target }) {
   const { person } = this.state
   const change = { [ key ]: target.value }
@@ -32,16 +38,29 @@ function close () {
   this.props.history.push('/')
 }
 
+function isSame (person) {
+  return person.isSame(this)
+}
+
+function findPerson({ people = [], match: { params = {} } }) {
+  const { id: createdAt } = params
+
+  const person = people.find(isSame, { createdAt })
+
+  return person ? person : new Person()
+}
+
 class PersonModalState extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      person: new Person()
+      person: findPerson(props)
     }
 
     this.methods = {
       onAddPerson: onAddPerson.bind(this),
+      onEditPerson: onEditPerson.bind(this),
       onChangeName: changePerson.bind(this, 'name'),
       onCloseModal: close.bind(this)
     }

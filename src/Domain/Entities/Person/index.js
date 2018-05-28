@@ -13,10 +13,15 @@ function clone (change) {
   return new Person(cloned)
 }
 
+function isSame (other) {
+  return this.createdAt.toString() === other.createdAt.toString()
+}
+
 function Person (data) {
   Object.assign(this, DEFAULTS, data, new InvalidableObject(this, SCHEMA))
 
   this.clone = clone.bind(this)
+  this.isSame = isSame.bind(this)
 }
 
 module.exports = Person

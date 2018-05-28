@@ -20,8 +20,10 @@ function Wrapper (props) {
   )
 }
 
-function Tab ({ tab, onAddItem, onAddPerson, match }) {
-  const { total } = tab
+function Tab (props) {
+  const { tab, match, onAddItem, onAddPerson, onEditPerson } = props
+
+  const { total, people } = tab
 
   return (
     <React.Fragment>
@@ -30,6 +32,7 @@ function Tab ({ tab, onAddItem, onAddPerson, match }) {
         <ItemsTable title="Items" {...tab} onAddItem={onAddItem} total={total} />
       </Tabs>
       <Wrapper path="/person" component={PersonModal} onAddPerson={onAddPerson} />
+      <Wrapper path="/person/edit/:id" component={PersonModal} onEditPerson={onEditPerson} people={people} />
       <Route path="/item" component={ItemModal} />
     </React.Fragment>
   )

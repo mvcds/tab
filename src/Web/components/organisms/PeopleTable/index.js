@@ -11,14 +11,20 @@ require('./peopleTable.styl')
 const baseClass = bem.bind(null, 'people-table')
 
 function PersonEntry (person, index) {
+  const { Link, perPerson, match }  = this
+
   return (
     <tr key={person.createdAt}>
-      <td>{person.name}</td>
+      <td className={baseClass('person-name')}>
+        <Link to={`${match.url}person/edit/${person.createdAt}`}>
+          {person.name}
+        </Link>
+      </td>
       <td>
-        <NumberAsText value={this.perPerson.percent} />
+        <NumberAsText value={perPerson.percent} />
       </td>
       <th>
-        <NumberAsText value={this.perPerson.value} />
+        <NumberAsText value={perPerson.value} />
       </th>
     </tr>
   )
@@ -46,7 +52,7 @@ function PeopleTable (props) {
           </tr>
         </thead>
         <tbody>
-          {people.map(PersonEntry, { perPerson })}
+          {people.map(PersonEntry, { perPerson, Link, match })}
         </tbody>
         <tfoot>
           <tr>

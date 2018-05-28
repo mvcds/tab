@@ -24,6 +24,16 @@ function getTotal () {
   return this.items.reduce(addSubtotal, 0)
 }
 
+function isSame(item) {
+  return item.isSame(this)
+}
+
+function edit (list, item) {
+  const index = this[list].findIndex(isSame, item)
+
+  this[list][index] = item
+}
+
 function Tab (data) {
   Object.assign(this, DEFAULTS, data)
 
@@ -32,6 +42,7 @@ function Tab (data) {
   this.clone = clone.bind(this)
   this.addItem = add.bind(this, 'items')
   this.addPerson = add.bind(this, 'people')
+  this.editPerson = edit.bind(this, 'people')
 }
 
 module.exports = Tab
