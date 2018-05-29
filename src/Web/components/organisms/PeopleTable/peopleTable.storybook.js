@@ -1,7 +1,6 @@
 const React = require('react')
 const { storiesOf } = require('@storybook/react')
 const { withKnobs, number } = require('@storybook/addon-knobs/react')
-const { action } = require('@storybook/addon-actions')
 
 const { FilledWithRandomPeople } = require('Entities/Tab/tab.factory')
 
@@ -20,7 +19,7 @@ const TOTAL = {
   range: true,
   min: MIN,
   max: 1500,
-  step: .5
+  step: 0.5
 }
 
 const props = {

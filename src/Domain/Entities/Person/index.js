@@ -1,5 +1,3 @@
-const Joi = require('joi')
-
 const GetDefaults = require('Services/GetDefaults')
 const InvalidableObject = require('Objects/InvalidableObject')
 

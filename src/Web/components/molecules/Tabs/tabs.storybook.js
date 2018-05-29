@@ -48,7 +48,7 @@ storiesOf('Components/Molecules/Tabs', module)
     const tab = number('Tab', 0, options)
 
     return (
-      <Tabs {...props} group="panels-test" tab={tab}>
+      <Tabs {...props} group='panels-test' tab={tab}>
         {PANELS.map(addPanel)}
       </Tabs>
     )

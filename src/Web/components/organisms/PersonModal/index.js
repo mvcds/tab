@@ -1,6 +1,5 @@
 const React = require('react')
 const PropTypes = require('prop-types')
-const bem = require('bem-classname')
 
 const Modal = require('Molecules/Modal')
 
@@ -45,13 +44,13 @@ class PersonModal extends React.Component {
       return (
         <Modal
           {...this.props}
-          title="New Person"
+          title='New Person'
           Footer={AddPerson}
           onAddPerson={this.addPerson}
         >
           <input
-            placeholder="Name"
-            ref="name"
+            placeholder='Name'
+            ref='name'
             value={this.props.person.name}
             onChange={this.props.onChangeName}
             autoFocus
@@ -61,19 +60,19 @@ class PersonModal extends React.Component {
     }
 
     return (
-        <Modal
-          {...this.props}
-          title="Edit Person"
-          Footer={EditPerson}
-          onEditPerson={this.editPerson}
-        >
-          <input
-            placeholder="Name"
-            value={this.props.person.name}
-            onChange={this.props.onChangeName}
-            autoFocus
-          />
-        </Modal>
+      <Modal
+        {...this.props}
+        title='Edit Person'
+        Footer={EditPerson}
+        onEditPerson={this.editPerson}
+      >
+        <input
+          placeholder='Name'
+          value={this.props.person.name}
+          onChange={this.props.onChangeName}
+          autoFocus
+        />
+      </Modal>
     )
   }
 }
@@ -85,6 +84,5 @@ PersonModal.propTypes = {
   onEditPerson: PropTypes.func.isRequired,
   onChangeName: PropTypes.func.isRequired
 }
-
 
 module.exports = PersonModal

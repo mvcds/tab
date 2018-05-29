@@ -18,7 +18,7 @@ function Dialog (props) {
   const { title, children, onCloseModal, Footer } = props
 
   return (
-    <div className={baseClass('dialog')} role="dialog">
+    <div className={baseClass('dialog')} role='dialog'>
       <header className={baseClass('header')}>
         <h2 className={baseClass('title')}>{title}</h2>
         <span onClick={onCloseModal} className={baseClass('close-icon')}>
@@ -38,7 +38,7 @@ function Dialog (props) {
 function Modal (props) {
   const { onCloseModal, Footer } = props
 
-  const footer = Footer ? Footer : DEFAULT_FOOTER
+  const footer = Footer || DEFAULT_FOOTER
 
   return (
     <div className={baseClass()}>

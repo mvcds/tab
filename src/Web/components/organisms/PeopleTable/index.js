@@ -4,14 +4,13 @@ const bem = require('bem-classname')
 const { Link: RouterLink } = require('react-router-dom')
 
 const NumberAsText = require('Atoms/NumberAsText')
-const Modal = require('Molecules/Modal')
 
 require('./peopleTable.styl')
 
 const baseClass = bem.bind(null, 'people-table')
 
 function PersonEntry (person, index) {
-  const { Link, perPerson, match }  = this
+  const { Link, perPerson, match } = this
 
   return (
     <tr key={person.createdAt}>
@@ -43,8 +42,8 @@ function PeopleTable (props) {
       <table className={baseClass('table')}>
         <thead>
           <tr>
-            <th rowSpan="2">Person</th>
-            <th colSpan="2">Equal Division</th>
+            <th rowSpan='2'>Person</th>
+            <th colSpan='2'>Equal Division</th>
           </tr>
           <tr>
             <th>%</th>
@@ -56,7 +55,7 @@ function PeopleTable (props) {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan="3" className={baseClass('button-wrapper')}>
+            <td colSpan='3' className={baseClass('button-wrapper')}>
               <Link to={`${match.url}person`} className={baseClass('button')}>
                 Add Person
               </Link>
@@ -64,7 +63,7 @@ function PeopleTable (props) {
           </tr>
           <tr>
             <td>Total</td>
-            <th colSpan="2">
+            <th colSpan='2'>
               <NumberAsText value={total} />
             </th>
           </tr>
@@ -77,6 +76,7 @@ function PeopleTable (props) {
 PeopleTable.propTypes = {
   people: PropTypes.arrayOf(PropTypes.object).isRequired,
   total: PropTypes.number.isRequired,
+  match: PropTypes.object.isRequired,
   Link: PropTypes.func.isRequired
 }
 

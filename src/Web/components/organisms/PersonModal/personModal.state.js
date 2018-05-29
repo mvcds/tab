@@ -42,12 +42,12 @@ function isSame (person) {
   return person.isSame(this)
 }
 
-function findPerson({ people = [], match: { params = {} } }) {
+function findPerson ({ people = [], match: { params = {} } }) {
   const { id: createdAt } = params
 
   const person = people.find(isSame, { createdAt })
 
-  return person ? person : new Person()
+  return person || new Person()
 }
 
 class PersonModalState extends React.Component {
@@ -68,7 +68,7 @@ class PersonModalState extends React.Component {
 
   render () {
     if (this.props.location.pathname === '/person') {
-      return <Redirect to="/person/new" />
+      return <Redirect to='/person/new' />
     }
 
     return (

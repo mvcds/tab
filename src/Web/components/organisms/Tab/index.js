@@ -16,7 +16,7 @@ function Wrapper (props) {
   delete rest.component
 
   return (
-    <Route path={path} render={(route) => <Component {...rest} {...route} /> } />
+    <Route path={path} render={(route) => <Component {...rest} {...route} />} />
   )
 }
 
@@ -27,13 +27,13 @@ function Tab (props) {
 
   return (
     <React.Fragment>
-      <Tabs group="main-tabs">
-        <PeopleTable title="People" {...tab} total={total} match={match} />
-        <ItemsTable title="Items" {...tab} onAddItem={onAddItem} total={total} />
+      <Tabs group='main-tabs'>
+        <PeopleTable title='People' {...tab} total={total} match={match} />
+        <ItemsTable title='Items' {...tab} onAddItem={onAddItem} total={total} />
       </Tabs>
-      <Wrapper path="/person" component={PersonModal} onAddPerson={onAddPerson} />
-      <Wrapper path="/person/edit/:id" component={PersonModal} onEditPerson={onEditPerson} people={people} />
-      <Route path="/item" component={ItemModal} />
+      <Wrapper path='/person' component={PersonModal} onAddPerson={onAddPerson} />
+      <Wrapper path='/person/edit/:id' component={PersonModal} onEditPerson={onEditPerson} people={people} />
+      <Route path='/item' component={ItemModal} />
     </React.Fragment>
   )
 }

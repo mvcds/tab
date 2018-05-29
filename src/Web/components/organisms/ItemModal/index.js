@@ -1,6 +1,5 @@
 const React = require('react')
 const PropTypes = require('prop-types')
-const bem = require('bem-classname')
 
 const NumberAsText = require('Atoms/NumberAsText')
 const Modal = require('Molecules/Modal')
@@ -32,27 +31,27 @@ class ItemModal extends React.Component {
 
   render () {
     return (
-      <Modal {...this.props} title="New Item" Footer={ItemModalFooter} onAddItem={this.addItem}>
+      <Modal {...this.props} title='New Item' Footer={ItemModalFooter} onAddItem={this.addItem}>
         <input
-          placeholder="Name"
-          ref="name"
+          placeholder='Name'
+          ref='name'
           value={this.props.item.name}
           onChange={this.props.onChangeName}
           autoFocus
         />
         <input
-          type="number"
-          placeholder="Units"
-          min="0"
-          step="1"
+          type='number'
+          placeholder='Units'
+          min='0'
+          step='1'
           value={this.props.item.units}
           onChange={this.props.onChangeUnits}
         />
         <input
-          type="number"
-          placeholder="Price"
-          min="0"
-          step="0.01"
+          type='number'
+          placeholder='Price'
+          min='0'
+          step='0.01'
           value={this.props.item.price}
           onChange={this.props.onChangePrice}
         />
@@ -69,6 +68,5 @@ ItemModal.propTypes = {
   onChangeUnits: PropTypes.func.isRequired,
   onChangePrice: PropTypes.func.isRequired
 }
-
 
 module.exports = ItemModal

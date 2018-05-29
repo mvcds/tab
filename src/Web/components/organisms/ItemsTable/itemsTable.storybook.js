@@ -4,7 +4,6 @@ const { withKnobs, number, boolean } = require('@storybook/addon-knobs/react')
 const { action } = require('@storybook/addon-actions')
 
 const { FilledWithRandomItems } = require('Entities/Tab/tab.factory')
-const { SingleItem } = require('Objects/ConsumedItem/consumedItem.factory.js')
 
 const ItemsTable = require('./index')
 
@@ -21,7 +20,7 @@ const TOTAL = {
   range: true,
   min: MIN,
   max: 1500,
-  step: .5
+  step: 0.5
 }
 
 const props = {
@@ -37,8 +36,6 @@ storiesOf('Components/Organisms/Items Table', module)
     const total = number('Total', MIN, TOTAL)
 
     const tab = FilledWithRandomItems(numberOfItems)
-
-    const newConsumedItem = SingleItem()
 
     return (
       <ItemsTable

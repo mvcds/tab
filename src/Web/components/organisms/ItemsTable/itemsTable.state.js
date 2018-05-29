@@ -1,7 +1,5 @@
 const React = require('react')
 
-const ConsumedItem = require('Objects/ConsumedItem')
-
 const ItemsTable = require('./index')
 
 function onChangeModal (isModalOpen) {

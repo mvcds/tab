@@ -1,5 +1,3 @@
-const Joi = require('joi')
-
 const GetDefaults = require('Services/GetDefaults')
 
 const SCHEMA = require('./tab.joi')
@@ -24,7 +22,7 @@ function getTotal () {
   return this.items.reduce(addSubtotal, 0)
 }
 
-function isSame(item) {
+function isSame (item) {
   return item.isSame(this)
 }
 

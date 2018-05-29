@@ -11,7 +11,7 @@ const props = {
   onAction: action('Take Some Action')
 }
 
-function customizedFooter({ onAction }) {
+function customizedFooter ({ onAction }) {
   return (
     <button onClick={onAction}>
       I agree
