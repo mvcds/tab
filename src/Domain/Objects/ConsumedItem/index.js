@@ -11,6 +11,10 @@ function clone (change) {
   return new ConsumedItem(cloned)
 }
 
+function isSame (other) {
+  return this.createdAt.toString() === other.createdAt.toString()
+}
+
 function getSubTotal () {
   return this.units * this.price
 }
@@ -21,6 +25,7 @@ function ConsumedItem (data) {
   Object.defineProperty(this, 'subTotal', { get: getSubTotal.bind(this) })
 
   this.clone = clone.bind(this)
+  this.isSame = isSame.bind(this)
 }
 
 module.exports = ConsumedItem

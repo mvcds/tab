@@ -21,19 +21,20 @@ function Wrapper (props) {
 }
 
 function Tab (props) {
-  const { tab, match, onAddItem, onAddPerson, onEditPerson } = props
+  const { tab, match, onAddItem, onAddPerson, onEditPerson, onEditItem } = props
 
-  const { total, people } = tab
+  const { total, people, items } = tab
 
   return (
     <React.Fragment>
       <Tabs group='main-tabs'>
         <PeopleTable title='People' {...tab} total={total} match={match} />
-        <ItemsTable title='Items' {...tab} onAddItem={onAddItem} total={total} />
+        <ItemsTable title='Items' {...tab} total={total} match={match} />
       </Tabs>
       <Wrapper path='/person' component={PersonModal} onAddPerson={onAddPerson} />
       <Wrapper path='/person/edit/:id' component={PersonModal} onEditPerson={onEditPerson} people={people} />
-      <Route path='/item' component={ItemModal} />
+      <Wrapper path='/item' component={ItemModal} onAddItem={onAddItem} />
+      <Wrapper path='/item/edit/:id' component={ItemModal} onEditItem={onEditItem} items={items} />
     </React.Fragment>
   )
 }

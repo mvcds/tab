@@ -1,5 +1,5 @@
 const { Factory } = require('rosie')
-const { commerce, random } = require('faker')
+const { commerce, random, date } = require('faker')
 
 const ConsumedItem = require('./index')
 
@@ -7,6 +7,7 @@ const factory = new Factory()
   .attr('name', commerce.productName)
   .attr('units', () => random.number({ min: 1, max: 10 }))
   .attr('price', () => random.number({ min: 5, max: 80 }) / random.number({ min: 1, max: 10 }))
+  .attr('createdAt', date.recent)
 
 function build (data) {
   const fixture = factory.build(data)

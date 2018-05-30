@@ -28,7 +28,8 @@ class TabState extends React.Component {
     this.methods = {
       onAddItem: mutateTab.bind(this, 'addItem'),
       onAddPerson: mutateTab.bind(this, 'addPerson'),
-      onEditPerson: mutateTab.bind(this, 'editPerson')
+      onEditPerson: mutateTab.bind(this, 'editPerson'),
+      onEditItem: mutateTab.bind(this, 'editItem')
     }
   }
 

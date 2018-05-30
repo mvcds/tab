@@ -1,34 +1,39 @@
 const React = require('react')
 const PropTypes = require('prop-types')
 const bem = require('bem-classname')
+const { Link: RouterLink } = require('react-router-dom')
 
 const NumberAsText = require('Atoms/NumberAsText')
-
-const ItemModal = require('Organisms/ItemModal')
 
 require('./itemsTable.styl')
 
 const baseClass = bem.bind(null, 'items-table')
 
-function ItemEntry ({ name, units, price, subTotal }) {
+function ItemEntry (item) {
+  const { Link, match } = this
+
   return (
-    <tr key={name}>
-      <td>{name}</td>
-      <td>
-        <NumberAsText value={units} />
+    <tr key={item.createdAt}>
+      <td className={baseClass('item-name')}>
+        <Link to={`${match.url}item/edit/${item.createdAt}`}>
+          {item.name}
+        </Link>
       </td>
       <td>
-        <NumberAsText value={price} />
+        <NumberAsText value={item.units} />
+      </td>
+      <td>
+        <NumberAsText value={item.price} />
       </td>
       <th>
-        <NumberAsText value={subTotal} />
+        <NumberAsText value={item.subTotal} />
       </th>
     </tr>
   )
 }
 
 function ItemsTable (props) {
-  const { items, isModalOpen, onOpenModal, total } = props
+  const { items, total, match, Link } = props
 
   return (
     <div className={baseClass()}>
@@ -42,14 +47,14 @@ function ItemsTable (props) {
           </tr>
         </thead>
         <tbody>
-          {items.map(ItemEntry)}
+          {items.map(ItemEntry, { Link, match })}
         </tbody>
         <tfoot>
           <tr>
             <td colSpan='4' className={baseClass('button-wrapper')}>
-              <button onClick={onOpenModal} className={baseClass('button')}>
+              <Link to={`${match.url}item`} className={baseClass('button')}>
                 Add Item
-              </button>
+              </Link>
             </td>
           </tr>
           <tr>
@@ -60,7 +65,6 @@ function ItemsTable (props) {
           </tr>
         </tfoot>
       </table>
-      {isModalOpen && <ItemModal {...props} />}
     </div>
   )
 }
@@ -68,9 +72,12 @@ function ItemsTable (props) {
 ItemsTable.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   total: PropTypes.number.isRequired,
-  isModalOpen: PropTypes.bool.isRequired,
-  onOpenModal: PropTypes.func.isRequired,
-  onCloseModal: PropTypes.func.isRequired
+  match: PropTypes.object.isRequired,
+  Link: PropTypes.func.isRequired
+}
+
+ItemsTable.defaultProps = {
+  Link: RouterLink
 }
 
 module.exports = ItemsTable

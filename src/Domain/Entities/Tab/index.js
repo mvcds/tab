@@ -39,6 +39,7 @@ function Tab (data) {
 
   this.clone = clone.bind(this)
   this.addItem = add.bind(this, 'items')
+  this.editItem = edit.bind(this, 'items')
   this.addPerson = add.bind(this, 'people')
   this.editPerson = edit.bind(this, 'people')
 }

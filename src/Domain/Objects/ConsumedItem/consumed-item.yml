@@ -13,5 +13,9 @@ attributes:
     type: decimal
     required: true
     default: 0
+  - name: createdAt
+    type: date
+    default: 'Date.now()'
+    required: true
 aliases:
   - entry

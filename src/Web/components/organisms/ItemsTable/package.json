@@ -1,6 +1,0 @@
-{
-  "name": "Items Table",
-  "description": "All tab's items",
-  "main": "./itemsTable.state.js",
-  "private": true
-}
